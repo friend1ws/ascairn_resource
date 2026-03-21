@@ -58,19 +58,23 @@ Gzipped TSV file describing where each rare k-mer (marker) occurs in the referen
 |--------|-------------|
 | `Marker` | K-mer sequence |
 | `Haplotype` | Haplotype identifier (e.g., `HG00438.pat`) |
+| `Contig_len` | Length of the centromeric contig for this haplotype (excluding margins) |
+| `Marker_pos` | Position of the marker relative to the start of the centromeric contig (see below) |
 
 Each row represents one occurrence of a marker in a haplotype. If a marker appears multiple times in a haplotype (copy number > 1), there will be multiple rows for that `Marker` × `Haplotype` pair.
 
-**Optional columns:**
+ascairn uses `Contig_len` and `Marker_pos` to compute relative positions (`Marker_pos / Contig_len`) and mean marker positions in the output.
+
+`Marker_pos` is adjusted so that position 0 corresponds to the start of the centromeric region. The original contig sequence includes 100,000 bp margins on both ends, so values can be negative (marker in the upstream margin) or exceed `Contig_len` (marker in the downstream margin).
+
+**Informational columns (not used by ascairn):**
 
 | Column | Description |
 |--------|-------------|
 | `Assembly_source` | Assembly project or source from which the haplotype was derived |
-| `Contig_len` | Length of the centromeric contig for this haplotype (excluding margins) |
-| `Marker_pos` | Position of the marker relative to the start of the centromeric contig. The original contig sequence includes 100,000 bp margins on both ends; `Marker_pos` is adjusted so that position 0 corresponds to the start of the centromeric region itself. Values can be negative (marker in the upstream margin) or exceed `Contig_len` (marker in the downstream margin). |
 | `Marker_strand` | Strand orientation of the marker (`+` or `-`) |
 
-Additional columns may be present and will be ignored by ascairn.
+Any other additional columns may be present and will be ignored by ascairn.
 
 **Example:**
 ```
