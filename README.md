@@ -110,6 +110,17 @@ HG02300.mat	1	4323166
 NA20355.mat	1	1686442
 ```
 
+## Panel: `ascairn_paper_2025`
+
+**Description:** Default reference panel used in the original ascairn paper.
+
+**Derived from genome assemblies:**
+- HPRC Year 1 (Liao et al., 2023)
+- HGSVC Phase 3 (Logsdon et al., 2025)
+- T2T Consortium (CHM13 v2.0, HG002 v1.1, CHM1)
+
+**Source sequences:** The 2,957 aHOR-hap FASTA files used to construct this panel, along with metadata describing the source assembly, contig ID, and genomic coordinates for each haplotype, are deposited at Zenodo: https://zenodo.org/records/19601002.
+
 ## License
 
 See [LICENSE](LICENSE).
