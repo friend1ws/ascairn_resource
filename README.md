@@ -133,9 +133,11 @@ NA20355.mat	1	1686442
 - HGSVC Phase 3 (Logsdon et al., 2025)
 - T2T Consortium (CHM13 v2.0, HG002 v1.1, CHM1)
 
+**Source sequences:** The aHOR-hap FASTA files used to construct this panel, along with metadata describing the source assembly, contig ID, and genomic coordinates for each haplotype, are deposited at Zenodo: https://zenodo.org/records/19601002.
+
 ## Panel: `ascairn_paper_2025`
 
-**Description:** Original reference panel used in the bioRxiv version of the ascairn paper. Kept for reproducibility; new analyses should prefer `ascairn_paper_2025_v2`.
+**Description:** Original reference panel used in the bioRxiv version of the ascairn paper (2,957 aHOR-haps, no chrY). Kept for reproducibility; new analyses should prefer `ascairn_paper_2025_v2`.
 
 **Derived from genome assemblies:**
 - HPRC Year 1 (Liao et al., 2023)
