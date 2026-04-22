@@ -14,7 +14,17 @@ resource/
 │   ├── chrX_short_arm_hg38.bed
 │   └── chrX_short_arm_chm13.bed
 ├── panel/
-│   └── ascairn_paper_2025/              # Default panel (HPRC Year 1, HGSVC Phase 3, CHM13, CHM1, HG002)
+│   ├── ascairn_paper_2025_v2/           # Recommended panel (updated, includes chrY)
+│   │   ├── rare_kmer_list.fa
+│   │   ├── kmer_info/
+│   │   │   ├── chr1.kmer_info.txt.gz
+│   │   │   ├── ...
+│   │   │   └── chrY.kmer_info.txt.gz
+│   │   └── hap_info/
+│   │       ├── chr1.hap_info.txt
+│   │       ├── ...
+│   │       └── chrY.hap_info.txt
+│   └── ascairn_paper_2025/              # Original panel (HPRC Year 1, HGSVC Phase 3, CHM13, CHM1, HG002)
 │       ├── rare_kmer_list.fa
 │       ├── kmer_info/
 │       │   ├── chr1.kmer_info.txt.gz
@@ -110,9 +120,22 @@ HG02300.mat	1	4323166
 NA20355.mat	1	1686442
 ```
 
+## Panel: `ascairn_paper_2025_v2` (recommended)
+
+**Description:** Updated reference panel. This is the currently recommended panel for new analyses.
+
+**Updates over `ascairn_paper_2025`:**
+- Added chrY
+- Removed k-mers containing `N` bases and refixed the haplotype set accordingly
+
+**Derived from genome assemblies:**
+- HPRC Year 1 (Liao et al., 2023)
+- HGSVC Phase 3 (Logsdon et al., 2025)
+- T2T Consortium (CHM13 v2.0, HG002 v1.1, CHM1)
+
 ## Panel: `ascairn_paper_2025`
 
-**Description:** Default reference panel used in the original ascairn paper.
+**Description:** Original reference panel used in the bioRxiv version of the ascairn paper. Kept for reproducibility; new analyses should prefer `ascairn_paper_2025_v2`.
 
 **Derived from genome assemblies:**
 - HPRC Year 1 (Liao et al., 2023)
