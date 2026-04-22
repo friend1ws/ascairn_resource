@@ -14,28 +14,18 @@ resource/
 │   ├── chrX_short_arm_hg38.bed
 │   └── chrX_short_arm_chm13.bed
 ├── panel/
-│   ├── ascairn_paper_2025_v2/           # Recommended panel (updated, includes chrY)
-│   │   ├── rare_kmer_list.fa
-│   │   ├── kmer_info/
-│   │   │   ├── chr1.kmer_info.txt.gz
-│   │   │   ├── ...
-│   │   │   └── chrY.kmer_info.txt.gz
-│   │   └── hap_info/
-│   │       ├── chr1.hap_info.txt
-│   │       ├── ...
-│   │       └── chrY.hap_info.txt
-│   └── ascairn_paper_2025/              # Original panel (HPRC Year 1, HGSVC Phase 3, CHM13, CHM1, HG002)
+│   └── ascairn_paper_2025/              # Current panel (HPRC Year 1, HGSVC Phase 3, CHM13, CHM1, HG002; includes chrY)
 │       ├── rare_kmer_list.fa
 │       ├── kmer_info/
 │       │   ├── chr1.kmer_info.txt.gz
 │       │   ├── ...
-│       │   └── chrX.kmer_info.txt.gz
+│       │   └── chrY.kmer_info.txt.gz
 │       └── hap_info/
 │           ├── chr1.hap_info.txt
 │           ├── ...
-│           └── chrX.hap_info.txt
+│           └── chrY.hap_info.txt
 └── legacy/
-    └── ver_2024-12-06/                  # Previous format (kept for backward compatibility)
+    └── ver_2024-12-06/                  # Original bioRxiv submission panel (old format, chrY not included)
 ```
 
 ## File Descriptions
@@ -120,31 +110,27 @@ HG02300.mat	1	4323166
 NA20355.mat	1	1686442
 ```
 
-## Panel: `ascairn_paper_2025_v2` (recommended)
+## Panel: `ascairn_paper_2025`
 
-**Description:** Updated reference panel. This is the currently recommended panel for new analyses.
-
-**Updates over `ascairn_paper_2025`:**
-- Added chrY
-- Removed k-mers containing `N` bases and refixed the haplotype set accordingly
+**Description:** Current reference panel. Use this for new analyses.
 
 **Derived from genome assemblies:**
 - HPRC Year 1 (Liao et al., 2023)
 - HGSVC Phase 3 (Logsdon et al., 2025)
 - T2T Consortium (CHM13 v2.0, HG002 v1.1, CHM1)
+
+**Changes since the bioRxiv submission version (see `legacy/ver_2024-12-06`):**
+- Added chrY
+- Removed k-mers containing `N` bases and refixed the haplotype set accordingly
+- Updated data format to match improvements in ascairn (`kmer_info` + `hap_info`, with `cluster_marker_count` now computed on the fly)
 
 **Source sequences:** The aHOR-hap FASTA files used to construct this panel, along with metadata describing the source assembly, contig ID, and genomic coordinates for each haplotype, are deposited at Zenodo: https://zenodo.org/records/19601002.
 
-## Panel: `ascairn_paper_2025`
+## Legacy: `legacy/ver_2024-12-06`
 
-**Description:** Original reference panel used in the bioRxiv version of the ascairn paper (2,957 aHOR-haps, no chrY). Kept for reproducibility; new analyses should prefer `ascairn_paper_2025_v2`.
+**Description:** The reference panel distributed with the original bioRxiv submission of the ascairn paper. Uses an older file format (pre-computed `cluster_marker_count` per cluster) and does not include chrY. Kept here for reproducibility.
 
-**Derived from genome assemblies:**
-- HPRC Year 1 (Liao et al., 2023)
-- HGSVC Phase 3 (Logsdon et al., 2025)
-- T2T Consortium (CHM13 v2.0, HG002 v1.1, CHM1)
-
-**Source sequences:** The 2,957 aHOR-hap FASTA files used to construct this panel, along with metadata describing the source assembly, contig ID, and genomic coordinates for each haplotype, are deposited at Zenodo: https://zenodo.org/records/19601002.
+This panel works with ascairn [v0.1.0b4](https://github.com/friend1ws/ascairn/releases/tag/v0.1.0b4) and earlier. Newer versions of ascairn expect the current panel format (`kmer_info` + `hap_info`). To convert a legacy panel to the current format, use `scripts/convert_legacy_to_panel.sh`.
 
 ## License
 
