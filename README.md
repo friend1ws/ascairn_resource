@@ -20,10 +20,15 @@ resource/
 │       │   ├── chr1.kmer_info.txt.gz
 │       │   ├── ...
 │       │   └── chrY.kmer_info.txt.gz
-│       └── hap_info/
-│           ├── chr1.hap_info.txt
+│       ├── hap_info/
+│       │   ├── chr1.hap_info.txt
+│       │   ├── ...
+│       │   └── chrY.hap_info.txt
+│       └── cluster_summary/             # Per-chromosome heatmap PDFs and HOR cluster summaries
+│           ├── chr1_marker_heatmap.pdf
+│           ├── chr1_HOR_cluster_summary.txt
 │           ├── ...
-│           └── chrY.hap_info.txt
+│           └── chrY_HOR_cluster_summary.txt
 └── legacy/
     └── ver_2024-12-06/                  # Original bioRxiv submission panel (old format, chrY not included)
 ```
