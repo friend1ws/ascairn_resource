@@ -47,7 +47,7 @@ BED files defining genomic regions used by ascairn. These are shared across all 
 
 ### panel/
 
-Each subdirectory under `panel/` is a self-contained reference panel. A panel contains three components:
+Each subdirectory under `panel/` is a self-contained reference panel. A panel contains the following components:
 
 #### `rare_kmer_list.fa`
 
@@ -114,6 +114,15 @@ HG00438.pat	1	2444327
 HG02300.mat	1	4323166
 NA20355.mat	1	1686442
 ```
+
+#### `cluster_summary/`
+
+Supplementary materials describing the cluster structure of the panel. These files are not consumed by ascairn itself but are provided to help users interpret the cluster assignments. One pair of files per chromosome.
+
+| File | Description |
+|------|-------------|
+| `{chr}_marker_heatmap.pdf` | Heatmap showing the presence/absence of each rare k-mer marker across reference haplotypes, with haplotypes grouped by cluster. Also includes HOR composition and haplotype labels for each row. |
+| `{chr}_HOR_cluster_summary.txt` | Tab-delimited table listing each reference haplotype with its cluster assignment, HOR composition (size of each monomer type, plus "Other HOR" and "Non HOR" segments), population, and centromeric contig length. |
 
 ## Panel: `ascairn_paper_2025`
 
