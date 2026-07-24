@@ -14,21 +14,25 @@ resource/
 │   ├── chrX_short_arm_hg38.bed
 │   └── chrX_short_arm_chm13.bed
 ├── panel/
-│   └── ascairn_paper_2025/              # Current panel (HPRC Year 1, HGSVC Phase 3, CHM13, CHM1, HG002; includes chrY)
+│   ├── ascairn_paper_2025/              # Current panel (HPRC Year 1, HGSVC Phase 3, CHM13, CHM1, HG002; includes chrY)
+│   │   ├── rare_kmer_list.fa
+│   │   ├── kmer_info/
+│   │   │   ├── chr1.kmer_info.txt.gz
+│   │   │   ├── ...
+│   │   │   └── chrY.kmer_info.txt.gz
+│   │   ├── hap_info/
+│   │   │   ├── chr1.hap_info.txt
+│   │   │   ├── ...
+│   │   │   └── chrY.hap_info.txt
+│   │   └── cluster_summary/             # Per-chromosome heatmap PDFs and HOR cluster summaries
+│   │       ├── chr1_marker_heatmap.pdf
+│   │       ├── chr1_HOR_cluster_summary.txt
+│   │       ├── ...
+│   │       └── chrY_HOR_cluster_summary.txt
+│   └── ascairn_paper_2025_chr_specificity_filtered/  # Chromosome-specificity filtered variant of ascairn_paper_2025
 │       ├── rare_kmer_list.fa
 │       ├── kmer_info/
-│       │   ├── chr1.kmer_info.txt.gz
-│       │   ├── ...
-│       │   └── chrY.kmer_info.txt.gz
-│       ├── hap_info/
-│       │   ├── chr1.hap_info.txt
-│       │   ├── ...
-│       │   └── chrY.hap_info.txt
-│       └── cluster_summary/             # Per-chromosome heatmap PDFs and HOR cluster summaries
-│           ├── chr1_marker_heatmap.pdf
-│           ├── chr1_HOR_cluster_summary.txt
-│           ├── ...
-│           └── chrY_HOR_cluster_summary.txt
+│       └── hap_info/
 └── legacy/
     └── ver_2024-12-06/                  # Original bioRxiv submission panel (old format, chrY not included)
 ```
@@ -139,6 +143,17 @@ Supplementary materials describing the cluster structure of the panel. These fil
 - Updated data format to match improvements in ascairn (`kmer_info` + `hap_info`, with `cluster_marker_count` now computed on the fly)
 
 **Source sequences:** The aHOR-hap FASTA files used to construct this panel, along with metadata describing the source assembly, contig ID, and genomic coordinates for each haplotype, are deposited at Zenodo: https://zenodo.org/records/19601002.
+
+## Panel: `ascairn_paper_2025_chr_specificity_filtered`
+
+**Description:** A chromosome-specificity filtered variant of `ascairn_paper_2025`. Following an anonymous reviewer's comment, marker k-mers were additionally filtered so that each rare k-mer is specific to its own chromosome.
+
+**Changes relative to `ascairn_paper_2025`:**
+- Applied an additional filter removing marker k-mers that also match other chromosomes, so that each rare k-mer is chromosome-specific.
+- The additional filtering reduced the total number of off-chromosome matches by 99.97% while retaining 95.3% of the original marker k-mers.
+- Repeating the ascairn cross-validation analysis with the filtered marker set left the haplogroup inference accuracy essentially unchanged.
+
+Aside from the marker set, this panel shares the same construction and source assemblies as `ascairn_paper_2025`.
 
 ## Legacy: `legacy/ver_2024-12-06`
 
